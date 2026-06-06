@@ -6,6 +6,12 @@ import plotly.graph_objects as go
 import json
 from urllib.parse import quote
 
+st.set_page_config(
+    page_title="Observatorio de Ejecución Presupuestaria",
+    page_icon="🇬🇹",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
 
 # =========================
 # LOGIN
@@ -24,12 +30,20 @@ def render_login_styles():
     st.markdown(
         """
         <style>
+        /* Fondo del login */
         .stApp {
-            background: linear-gradient(160deg, #e8eef5 0%, #dde6f0 100%);
+            background: linear-gradient(160deg, #e8eef5 0%, #dde6f0 100%) !important;
         }
-        [data-testid="collapsedControl"] { display: none; }
-        header[data-testid="stHeader"]   { display: none; }
-
+        /* Ocultar sidebar y header en la pantalla de login */
+        section[data-testid="stSidebar"] { display: none !important; }
+        [data-testid="collapsedControl"]  { display: none !important; }
+        header[data-testid="stHeader"]    { display: none !important; }
+        /* Centrar el contenido verticalmente */
+        .block-container {
+            padding-top: 5vh !important;
+            max-width: 700px !important;
+            margin: auto !important;
+        }
         .divider {
             border: none;
             border-top: 1px solid #e5e7eb;
