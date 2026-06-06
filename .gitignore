@@ -1,0 +1,26 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+.venv/
+
+# Datos generados (se regeneran con el pipeline)
+Data/guatecompras_adjudicaciones.parquet
+Data/snip_proyectos.parquet
+Data/snip_proyectos_clean.parquet
+Data/observatorio_snip_guatecompras.xlsx
+Data/pipeline_progress.json
+Data/new_data/
+
+# Logs
+errores_descarga.txt
+*.log
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db

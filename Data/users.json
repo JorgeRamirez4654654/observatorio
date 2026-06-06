@@ -1,0 +1,14 @@
+[
+  {
+    "username": "admin",
+    "password_hash": "$pbkdf2-sha256$29000$9T6nVOqdM0ZorXXu/b/3ng$LZKlW8sp/k5/bvIaKzy1vyy85x2e8n9PKnF7b5Mzxgg",
+    "role": "admin",
+    "created_at": "2026-05-13T20:03:47.306824+00:00"
+  },
+  {
+    "username": "improgress",
+    "password_hash": "$pbkdf2-sha256$29000$33svhXCOsZbSuvd.D4GwFg$zThUijavQFTTjiEczb5TamQpgHTTae49oCk/GBIRSlc",
+    "role": "admin",
+    "created_at": "2026-05-13T20:03:47.310010+00:00"
+  }
+]
