@@ -375,17 +375,21 @@ def format_money(x):
 # =========================
 @st.cache_data
 def load_combined(path1: str, path2: str) -> pd.DataFrame:
+    import os
     TITLE_COL = "compiledRelease/tender/title"
-    df1 = load_data(path1)
+
+    # Cargar CSV (siempre disponible)
     df2 = load_data(path2)
-
-    # FILE_PATH: replace proyecto with tender title where available
-    if TITLE_COL in df1.columns:
-        df1["proyecto"] = df1[TITLE_COL].where(df1[TITLE_COL].notna(), df1["proyecto"])
-
-    # FILE_PATH_2: proyecto comes as "356596 - TITULO", keep only the title part
     if "proyecto" in df2.columns:
         df2["proyecto"] = df2["proyecto"].str.replace(r"^\d+\s*-\s*", "", regex=True)
+
+    # Cargar parquet solo si existe (se genera con el pipeline)
+    if not os.path.exists(path1):
+        return df2
+
+    df1 = load_data(path1)
+    if TITLE_COL in df1.columns:
+        df1["proyecto"] = df1[TITLE_COL].where(df1[TITLE_COL].notna(), df1["proyecto"])
 
     snips_existentes = set(df1["snip"].dropna().astype(str).unique())
     df2_nuevos = df2[~df2["snip"].astype(str).isin(snips_existentes)]
